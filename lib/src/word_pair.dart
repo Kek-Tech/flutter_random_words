@@ -42,7 +42,7 @@ Iterable<WordPair> generateWordPairs(
     {int maxSyllables: maxSyllablesDefault,
     int top: topDefault,
     bool safeOnly: safeOnlyDefault,
-    Random random}) sync* {
+    Random? random}) sync* {
   random ??= _random;
 
   bool filterWord(String word) {
@@ -64,7 +64,7 @@ Iterable<WordPair> generateWordPairs(
     shortNouns = nouns.where(filterWord).take(top).toList(growable: false);
   }
 
-  String pickRandom(List<String> list) => list[random.nextInt(list.length)];
+  String pickRandom(List<String> list) => list[random!.nextInt(list.length)];
 
   // We're in a sync* function, so `while (true)` is okay.
   // ignore: literal_only_boolean_expressions
@@ -100,28 +100,27 @@ Iterable<WordPair> generateWordPairs(
 /// and 'rim' is the second.
 class WordPair {
   /// The first part of the pair.
-  final String first;
+  final String? first;
 
   /// The second part of the pair.
-  final String second;
+  final String? second;
 
-  String _asPascalCase;
+  String? _asPascalCase;
 
-  String _asCamelCase;
+  String? _asCamelCase;
 
-  String _asLowerCase;
+  String? _asLowerCase;
 
-  String _asUpperCase;
+  String? _asUpperCase;
 
-  String _asString;
+  String? _asString;
 
   /// Create a [WordPair] from the strings [first] and [second].
   WordPair(this.first, this.second) {
     if (first == null || second == null) {
       throw new ArgumentError("Words of WordPair cannot be null. "
           "Received: '$first', '$second'");
-    }
-    if (first.isEmpty || second.isEmpty) {
+    } else if (first!.isEmpty || second!.isEmpty) {
       throw new ArgumentError("Words of WordPair cannot be empty. "
           "Received: '$first', '$second'");
     }
@@ -137,7 +136,7 @@ class WordPair {
       {int maxSyllables: maxSyllablesDefault,
       int top: topDefault,
       bool safeOnly: safeOnlyDefault,
-      Random random}) {
+      Random? random}) {
     random ??= _random;
     final pairsIterable = generateWordPairs(
         maxSyllables: maxSyllables,
@@ -188,7 +187,7 @@ class WordPair {
 
   /// Creates a new [WordPair] with both parts in lower case.
   WordPair toLowerCase() =>
-      new WordPair(first.toLowerCase(), second.toLowerCase());
+      new WordPair(first!.toLowerCase(), second!.toLowerCase());
 
   @override
   String toString() => asString;
@@ -197,7 +196,7 @@ class WordPair {
     return "${word[0].toUpperCase()}${word.substring(1).toLowerCase()}";
   }
 
-  String _createCamelCase() => "${first.toLowerCase()}${_capitalize(second)}";
+  String _createCamelCase() => "${first!.toLowerCase()}${_capitalize(second!)}";
 
-  String _createPascalCase() => "${_capitalize(first)}${_capitalize(second)}";
+  String _createPascalCase() => "${_capitalize(first!)}${_capitalize(second!)}";
 }

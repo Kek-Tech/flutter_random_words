@@ -37,7 +37,7 @@ Iterable<WordAdjective> generateAdjective(
     {int maxSyllables: adjectiveMaxSyllablesDefault,
     int top: adjectiveTopDefault,
     bool safeOnly: adjectiveSafeOnlyDefault,
-    Random random}) sync* {
+    Random? random}) sync* {
   random ??= _random;
 
   bool filterWord(String word) {
@@ -56,12 +56,12 @@ Iterable<WordAdjective> generateAdjective(
         adjectives.where(filterWord).take(top).toList(growable: false);
   }
 
-  String pickRandom(List<String> list) => list[random.nextInt(list.length)];
+  String pickRandom(List<String> list) => list[random!.nextInt(list.length)];
 
   // We're in a sync* function, so `while (true)` is okay.
   // ignore: literal_only_boolean_expressions
   while (true) {
-    String word;
+    String? word;
     if (random.nextBool()) {
       word = pickRandom(shortAdjectives);
     }
@@ -83,23 +83,22 @@ Iterable<WordAdjective> generateAdjective(
 /// A given [word] that is an adjective.
 class WordAdjective {
   /// The adjective word.
-  final String word;
+  final String? word;
 
-  String _asLowerCase;
+  String? _asLowerCase;
 
-  String _asUpperCase;
+  String? _asUpperCase;
 
-  String _asString;
+  String? _asString;
 
-  String _asCapitalized;
+  String? _asCapitalized;
 
   /// Create a [WordAdjective] from the strings [word].
   WordAdjective(this.word) {
     if (word == null) {
       throw new ArgumentError("Word cannot be null. "
           "Received: '$word'");
-    }
-    if (word.isEmpty) {
+    } else if (word!.isEmpty) {
       throw new ArgumentError("Wordcannot be empty. "
           "Received: '$word'");
     }
@@ -115,7 +114,7 @@ class WordAdjective {
       {int maxSyllables: adjectiveMaxSyllablesDefault,
       int top: adjectiveTopDefault,
       bool safeOnly: adjectiveSafeOnlyDefault,
-      Random random}) {
+      Random? random}) {
     random ??= _random;
     final adjectiveIterable = generateAdjective(
         maxSyllables: maxSyllables,
@@ -139,7 +138,7 @@ class WordAdjective {
 
   /// Returns the noun as a capitalized string, like `"Political"`
   /// or `"Military"`.
-  String get asCapitalized => _asCapitalized ??= _capitalize(word);
+  String get asCapitalized => _asCapitalized ??= _capitalize(word!);
 
   @override
   int get hashCode => asString.hashCode;

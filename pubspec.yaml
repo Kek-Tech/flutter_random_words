@@ -8,7 +8,7 @@ version: 1.0.2
 homepage: https://github.com/t04glovern/random_words
 
 environment:
-  sdk: '>=1.22.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   string_scanner: ^1.0.1

@@ -19,7 +19,7 @@ class GenerateWordPairBenchmark extends BenchmarkBase {
   @override
   void run() {
     for (var pair in generateWordPairs().take(100)) {
-      length += pair.first.length + pair.second.length;
+      length += pair.first!.length + pair.second!.length;
     }
   }
 
