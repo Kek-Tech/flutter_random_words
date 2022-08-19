@@ -6,7 +6,6 @@ linter:
   rules:
     - always_declare_return_types
     - annotate_overrides
-    - avoid_as
     - avoid_empty_else
     - avoid_init_to_null
     - avoid_return_types_on_setters
@@ -42,7 +41,6 @@ linter:
     - slash_for_doc_comments
     - sort_constructors_first
     - sort_unnamed_constructors_first
-    - super_goes_last
     - test_types_in_equals
     - throw_in_finally
     - type_annotate_public_apis
