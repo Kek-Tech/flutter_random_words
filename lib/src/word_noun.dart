@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:random_words/src/syllables.dart';
-import 'package:random_words/src/words/nouns.dart';
-import 'package:random_words/src/words/nouns_monosyllabic_safe.dart';
-import 'package:random_words/src/words/unsafe.dart';
+import 'package:flutter_random_words/src/syllables.dart';
+import 'package:flutter_random_words/src/words/nouns.dart';
+import 'package:flutter_random_words/src/words/nouns_monosyllabic_safe.dart';
+import 'package:flutter_random_words/src/words/unsafe.dart';
 
 /// The default value of the `maxSyllables` parameter of the [generateNoun]
 /// function.

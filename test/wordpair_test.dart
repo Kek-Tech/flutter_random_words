@@ -1,5 +1,5 @@
-import 'package:random_words/random_words.dart';
-import 'package:random_words/src/words/unsafe.dart';
+import 'package:flutter_random_words/random_words.dart';
+import 'package:flutter_random_words/src/words/unsafe.dart';
 import 'package:test/test.dart';
 
 void main() {

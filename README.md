@@ -11,7 +11,7 @@ off of Filip Hracek's english_words plugin
 
 Printing the top 50 most used nouns in the English language:
 
-    import 'package:random_words/random_words.dart';
+    import 'package:flutter_random_words/random_words.dart';
 
     main() {
       nouns.take(50).forEach(print);
