@@ -39,7 +39,7 @@ Generate 10 random nouns:
 
 If you want to run the tests for this project under Flutter Dart
 
-    flutter pub pub run test
+    flutter pub run test
 
 ## Features and bugs
 
