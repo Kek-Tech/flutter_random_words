@@ -1,4 +1,4 @@
-name: random_words
+name: flutter_random_words
 description: >
   Utilities for generating random English words. It gives the option to retrieve
   random Nouns and Adjectives along with WordPairs. It is based off of Filip Hracek's
